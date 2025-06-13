@@ -1,102 +1,782 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useState } from "react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Github,
+  Linkedin,
+  Mail,
+  ExternalLink,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+
+export default function Portfolio() {
+  const [activeTab, setActiveTab] = useState("project");
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [currentMiniProjectIndex, setCurrentMiniProjectIndex] = useState(0);
+
+  const projects = [
+    {
+      title: "E-Commerce Platform",
+      description:
+        "A full-stack e-commerce solution built with React, Node.js, and MongoDB. Features include user authentication, payment processing, and admin dashboard.",
+      image: "/placeholder.svg?height=400&width=600",
+      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+      github: "https://github.com",
+      live: "https://example.com",
+    },
+    {
+      title: "Task Management App",
+      description:
+        "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
+      image: "/placeholder.svg?height=400&width=600",
+      technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+      github: "https://github.com",
+      live: "https://example.com",
+    },
+  ];
+
+  const miniProjects = [
+    {
+      title: "Weather Widget",
+      description:
+        "A responsive weather widget that displays current weather conditions and forecasts using OpenWeather API.",
+      image: "/placeholder.svg?height=300&width=400",
+      technologies: ["JavaScript", "CSS3", "Weather API"],
+      github: "https://github.com",
+      live: "https://example.com",
+    },
+    {
+      title: "Color Palette Generator",
+      description:
+        "A tool for generating harmonious color palettes for design projects with export functionality.",
+      image: "/placeholder.svg?height=300&width=400",
+      technologies: ["React", "Color Theory", "CSS"],
+      github: "https://github.com",
+      live: "https://example.com",
+    },
+  ];
+
+  const currentProjects = activeTab === "project" ? projects : miniProjects;
+  const currentIndex =
+    activeTab === "project" ? currentProjectIndex : currentMiniProjectIndex;
+  const setCurrentIndex =
+    activeTab === "project"
+      ? setCurrentProjectIndex
+      : setCurrentMiniProjectIndex;
+
+  const nextProject = () => {
+    setCurrentIndex((prev) => (prev + 1) % currentProjects.length);
+  };
+
+  const prevProject = () => {
+    setCurrentIndex(
+      (prev) => (prev - 1 + currentProjects.length) % currentProjects.length
+    );
+  };
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 to-blue-50">
+      {/* Header */}
+      <header className="bg-white/80 backdrop-blur-sm border-b border-rose-200 sticky top-0 z-50">
+        <div className="container mx-auto px-6 py-4">
+          <nav className="flex justify-between items-center">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-rose-400 to-blue-400 bg-clip-text text-transparent">
+              Your Name
+            </h1>
+            <div className="flex space-x-6">
+              <a
+                href="#about"
+                className="text-gray-700 hover:text-rose-400 transition-colors"
+              >
+                About
+              </a>
+              <a
+                href="#skills"
+                className="text-gray-700 hover:text-rose-400 transition-colors"
+              >
+                Skills
+              </a>
+              <a
+                href="#education"
+                className="text-gray-700 hover:text-rose-400 transition-colors"
+              >
+                Education
+              </a>
+              <a
+                href="#certifications"
+                className="text-gray-700 hover:text-rose-400 transition-colors"
+              >
+                Certifications
+              </a>
+              <a
+                href="#projects"
+                className="text-gray-700 hover:text-rose-400 transition-colors"
+              >
+                Projects
+              </a>
+              <a
+                href="#contact"
+                className="text-gray-700 hover:text-rose-400 transition-colors"
+              >
+                Contact
+              </a>
+            </div>
+          </nav>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </header>
+
+      {/* Hero Section */}
+      <section className="py-20 px-6">
+        <div className="container mx-auto text-center">
+          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-rose-400 to-blue-400 bg-clip-text text-transparent">
+            Hello, I'm a Developer
+          </h2>
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            I create beautiful and functional web experiences with modern
+            technologies. Passionate about clean code and innovative solutions.
+          </p>
+          <div className="flex justify-center space-x-4">
+            <Button className="bg-rose-400 hover:bg-rose-500 text-white">
+              <Github className="w-4 h-4 mr-2" />
+              GitHub
+            </Button>
+            <Button
+              variant="outline"
+              className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white"
+            >
+              <Linkedin className="w-4 h-4 mr-2" />
+              LinkedIn
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 px-6 bg-white/50">
+        <div className="container mx-auto">
+          <h3 className="text-3xl font-bold text-center mb-12 text-gray-800">
+            About Me
+          </h3>
+          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-gray-600 mb-6">
+                I'm a passionate full-stack developer with expertise in modern
+                web technologies. I love creating user-friendly applications
+                that solve real-world problems.
+              </p>
+              <p className="text-gray-600 mb-6">
+                With a background in computer science and years of hands-on
+                experience, I specialize in React, Node.js, and cloud
+                technologies.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "React",
+                  "TypeScript",
+                  "Node.js",
+                  "Python",
+                  "AWS",
+                  "MongoDB",
+                ].map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <div className="w-64 h-64 bg-gradient-to-br from-rose-200 to-blue-200 rounded-full flex items-center justify-center">
+                <span className="text-gray-500">Your Photo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section id="skills" className="py-20 px-6">
+        <div className="container mx-auto">
+          <h3 className="text-3xl font-bold text-center mb-12 text-gray-800">
+            Skills & Technologies
+          </h3>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Frontend */}
+              <div className="bg-white/70 backdrop-blur-sm rounded-lg p-6 border border-rose-200">
+                <h4 className="text-xl font-semibold mb-6 text-rose-600 text-center">
+                  Frontend
+                </h4>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-white font-bold text-lg">JS</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">
+                      JavaScript
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-white font-bold text-lg">TS</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">
+                      TypeScript
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <div className="w-12 h-12 bg-cyan-500 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-white font-bold text-lg">R</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">
+                      React
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-white font-bold text-lg">V</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">
+                      Vue.js
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <div className="w-12 h-12 bg-blue-400 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-white font-bold text-lg">TW</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">
+                      Tailwind
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-white font-bold text-lg">S</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">
+                      Sass
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Backend */}
+              <div className="bg-white/70 backdrop-blur-sm rounded-lg p-6 border border-blue-200">
+                <h4 className="text-xl font-semibold mb-6 text-blue-600 text-center">
+                  Backend
+                </h4>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-white font-bold text-lg">N</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">
+                      Node.js
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <div className="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-white font-bold text-lg">PY</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">
+                      Python
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <div className="w-12 h-12 bg-blue-700 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-white font-bold text-lg">PG</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">
+                      PostgreSQL
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-white font-bold text-lg">M</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">
+                      MongoDB
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-white font-bold text-lg">E</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">
+                      Express
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-white font-bold text-lg">FB</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">
+                      Firebase
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Tools & Others */}
+              <div className="bg-white/70 backdrop-blur-sm rounded-lg p-6 border border-purple-200">
+                <h4 className="text-xl font-semibold mb-6 text-purple-600 text-center">
+                  Tools & Others
+                </h4>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-white font-bold text-lg">Git</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">
+                      Git
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-white font-bold text-lg">D</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">
+                      Docker
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-white font-bold text-lg">AWS</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">
+                      AWS
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-white font-bold text-lg">F</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">
+                      Figma
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <div className="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-white font-bold text-lg">VS</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">
+                      VS Code
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-2">
+                      <span className="text-white font-bold text-lg">PM</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">
+                      Postman
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section id="education" className="py-20 px-6 bg-white/50">
+        <div className="container mx-auto">
+          <h3 className="text-3xl font-bold text-center mb-12 text-gray-800">
+            Education
+          </h3>
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-8">
+              <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-rose-400">
+                <div className="flex flex-col md:flex-row md:justify-between md:items-start">
+                  <div className="flex-1">
+                    <h4 className="text-xl font-semibold text-gray-800 mb-2">
+                      Bachelor of Computer Science
+                    </h4>
+                    <p className="text-rose-600 font-medium mb-2">
+                      University Name
+                    </p>
+                    <p className="text-gray-600 mb-3">
+                      Focused on software engineering, data structures, and
+                      algorithms. Graduated with honors.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm">
+                        Software Engineering
+                      </span>
+                      <span className="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm">
+                        Data Structures
+                      </span>
+                      <span className="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm">
+                        Algorithms
+                      </span>
+                    </div>
+                  </div>
+                  <div className="mt-4 md:mt-0 md:ml-6">
+                    <span className="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">
+                      2020 - 2024
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-blue-400">
+                <div className="flex flex-col md:flex-row md:justify-between md:items-start">
+                  <div className="flex-1">
+                    <h4 className="text-xl font-semibold text-gray-800 mb-2">
+                      Full Stack Web Development Bootcamp
+                    </h4>
+                    <p className="text-blue-600 font-medium mb-2">
+                      Coding Academy
+                    </p>
+                    <p className="text-gray-600 mb-3">
+                      Intensive program covering modern web development
+                      technologies and best practices.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
+                        MERN Stack
+                      </span>
+                      <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
+                        Agile Development
+                      </span>
+                      <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
+                        Project Management
+                      </span>
+                    </div>
+                  </div>
+                  <div className="mt-4 md:mt-0 md:ml-6">
+                    <span className="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">
+                      2023
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications Section */}
+      <section id="certifications" className="py-20 px-6">
+        <div className="container mx-auto">
+          <h3 className="text-3xl font-bold text-center mb-12 text-gray-800">
+            Certifications
+          </h3>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-rose-400 to-rose-500 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-lg">AWS</span>
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="font-semibold text-gray-800">
+                      AWS Certified Developer
+                    </h4>
+                    <p className="text-sm text-gray-500">Amazon Web Services</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 text-sm mb-3">
+                  Demonstrates expertise in developing and maintaining
+                  applications on AWS platform.
+                </p>
+                <div className="flex justify-between items-center">
+                  <span className="text-xs text-gray-500">Issued: 2024</span>
+                  <Button variant="outline" size="sm" className="text-xs">
+                    View Certificate
+                  </Button>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-500 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-lg">GCP</span>
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="font-semibold text-gray-800">
+                      Google Cloud Professional
+                    </h4>
+                    <p className="text-sm text-gray-500">
+                      Google Cloud Platform
+                    </p>
+                  </div>
+                </div>
+                <p className="text-gray-600 text-sm mb-3">
+                  Professional-level certification for cloud architecture and
+                  development.
+                </p>
+                <div className="flex justify-between items-center">
+                  <span className="text-xs text-gray-500">Issued: 2023</span>
+                  <Button variant="outline" size="sm" className="text-xs">
+                    View Certificate
+                  </Button>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-500 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-lg">JS</span>
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="font-semibold text-gray-800">
+                      JavaScript Algorithms
+                    </h4>
+                    <p className="text-sm text-gray-500">freeCodeCamp</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 text-sm mb-3">
+                  Comprehensive certification covering JavaScript fundamentals
+                  and data structures.
+                </p>
+                <div className="flex justify-between items-center">
+                  <span className="text-xs text-gray-500">Issued: 2023</span>
+                  <Button variant="outline" size="sm" className="text-xs">
+                    View Certificate
+                  </Button>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-500 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-lg">RX</span>
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="font-semibold text-gray-800">
+                      React Developer
+                    </h4>
+                    <p className="text-sm text-gray-500">Meta</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 text-sm mb-3">
+                  Professional certification for React development and modern
+                  frontend practices.
+                </p>
+                <div className="flex justify-between items-center">
+                  <span className="text-xs text-gray-500">Issued: 2024</span>
+                  <Button variant="outline" size="sm" className="text-xs">
+                    View Certificate
+                  </Button>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-500 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-lg">UX</span>
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="font-semibold text-gray-800">UX Design</h4>
+                    <p className="text-sm text-gray-500">Google</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 text-sm mb-3">
+                  Comprehensive program covering user experience design
+                  principles and practices.
+                </p>
+                <div className="flex justify-between items-center">
+                  <span className="text-xs text-gray-500">Issued: 2023</span>
+                  <Button variant="outline" size="sm" className="text-xs">
+                    View Certificate
+                  </Button>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-400 to-indigo-500 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-lg">PM</span>
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="font-semibold text-gray-800">
+                      Project Management
+                    </h4>
+                    <p className="text-sm text-gray-500">PMI</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 text-sm mb-3">
+                  Professional certification in project management methodologies
+                  and best practices.
+                </p>
+                <div className="flex justify-between items-center">
+                  <span className="text-xs text-gray-500">Issued: 2024</span>
+                  <Button variant="outline" size="sm" className="text-xs">
+                    View Certificate
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-20 px-6">
+        <div className="container mx-auto">
+          <div className="mb-12">
+            <div className="flex justify-between items-center mb-8">
+              <h3 className="text-3xl font-bold text-gray-800">PROJECTS</h3>
+              <div className="flex space-x-1 bg-white rounded-lg p-1 shadow-sm border">
+                <button
+                  onClick={() => setActiveTab("project")}
+                  className={`px-6 py-2 rounded-md transition-all ${
+                    activeTab === "project"
+                      ? "bg-rose-400 text-white shadow-sm"
+                      : "text-gray-600 hover:text-rose-400"
+                  }`}
+                >
+                  project
+                </button>
+                <button
+                  onClick={() => setActiveTab("mini projects")}
+                  className={`px-6 py-2 rounded-md transition-all ${
+                    activeTab === "mini projects"
+                      ? "bg-blue-400 text-white shadow-sm"
+                      : "text-gray-600 hover:text-blue-400"
+                  }`}
+                >
+                  mini projects
+                </button>
+              </div>
+            </div>
+
+            <div className="border-t-4 border-gray-800 mb-8"></div>
+
+            {/* Blur container that holds everything */}
+            <div className="bg-white/30 backdrop-blur-sm rounded-3xl p-8 border border-white/50 shadow-lg">
+              <div className="flex items-center justify-center gap-8">
+                {/* Left Arrow */}
+                <div className="flex flex-col items-center">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="bg-white hover:bg-gray-50 border-2 border-gray-300 shadow-lg mb-2"
+                    onClick={prevProject}
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </Button>
+                </div>
+
+                {/* Screenshots Section */}
+                <Card className="overflow-hidden border-2 border-gray-800 flex-1 max-w-md">
+                  <CardContent className="p-0 h-80 flex items-center justify-center relative">
+                    <img
+                      src={
+                        currentProjects[currentIndex]?.image ||
+                        "/placeholder.svg"
+                      }
+                      alt={currentProjects[currentIndex]?.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                      <span className="text-white text-lg font-medium">
+                        screenshots of the project
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Description Section */}
+                <Card className="border-2 border-gray-800 flex-1 max-w-md">
+                  <CardContent className="p-6 h-80 flex flex-col justify-between">
+                    <div>
+                      <h4 className="text-xl font-bold mb-3 text-gray-800">
+                        {currentProjects[currentIndex]?.title}
+                      </h4>
+                      <p className="text-gray-600 mb-4 leading-relaxed text-sm">
+                        {currentProjects[currentIndex]?.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {currentProjects[currentIndex]?.technologies.map(
+                          (tech) => (
+                            <span
+                              key={tech}
+                              className={`px-2 py-1 rounded-full text-xs ${
+                                activeTab === "project"
+                                  ? "bg-rose-100 text-rose-700"
+                                  : "bg-blue-100 text-blue-700"
+                              }`}
+                            >
+                              {tech}
+                            </span>
+                          )
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex space-x-3">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-gray-400 text-gray-600 hover:bg-gray-50 text-xs"
+                      >
+                        <Github className="w-3 h-3 mr-1" />
+                        Code
+                      </Button>
+                      <Button
+                        size="sm"
+                        className={`text-xs ${
+                          activeTab === "project"
+                            ? "bg-rose-400 hover:bg-rose-500"
+                            : "bg-blue-400 hover:bg-blue-500"
+                        } text-white`}
+                      >
+                        <ExternalLink className="w-3 h-3 mr-1" />
+                        Live Demo
+                      </Button>
+                    </div>
+                    <div className="text-center mt-2">
+                      <span className="text-gray-500 text-sm">
+                        project description
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Right Arrow */}
+                <div className="flex flex-col items-center">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="bg-white hover:bg-gray-50 border-2 border-gray-300 shadow-lg mb-2"
+                    onClick={nextProject}
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-6 bg-white/50">
+        <div className="container mx-auto text-center">
+          <h3 className="text-3xl font-bold mb-8 text-gray-800">
+            Get In Touch
+          </h3>
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            I'm always open to discussing new opportunities and interesting
+            projects.
+          </p>
+          <Button className="bg-gradient-to-r from-rose-400 to-blue-400 hover:from-rose-500 hover:to-blue-500 text-white">
+            <Mail className="w-4 h-4 mr-2" />
+            Contact Me
+          </Button>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-white py-8 px-6">
+        <div className="container mx-auto text-center">
+          <p>&copy; 2024 Your Name. All rights reserved.</p>
+        </div>
       </footer>
     </div>
   );
