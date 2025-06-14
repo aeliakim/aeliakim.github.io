@@ -132,11 +132,11 @@ export default function Portfolio() {
       <section className="py-20 px-6">
         <div className="container mx-auto text-center">
           <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-rose-400 to-blue-400 bg-clip-text text-transparent">
-            Hello, I'm a Developer
+            Hello, I'm Desiana Fitria
           </h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            I create beautiful and functional web experiences with modern
-            technologies. Passionate about clean code and innovative solutions.
+            I'm a passionate developer, mainly interested in Back-End and Cloud
+            Computing, also excited to learn new things to upgrade my skills.
           </p>
           <div className="flex justify-center space-x-4">
             <Button className="bg-rose-400 hover:bg-rose-500 text-white">
@@ -163,23 +163,23 @@ export default function Portfolio() {
           <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-gray-600 mb-6">
-                I'm a passionate full-stack developer with expertise in modern
-                web technologies. I love creating user-friendly applications
-                that solve real-world problems.
+                I'm a passionate web developer with experience in back-end and
+                cloud computing technologies. I love creating tools that can
+                accomodate my hobbies and solve real-world problems.
               </p>
               <p className="text-gray-600 mb-6">
-                With a background in computer science and years of hands-on
-                experience, I specialize in React, Node.js, and cloud
+                With a background in computer engineering and several hands-on
+                projects experience, I specialize in Node.js, Go, and cloud
                 technologies.
               </p>
               <div className="flex flex-wrap gap-2">
                 {[
-                  "React",
-                  "TypeScript",
+                  "JavaScript",
                   "Node.js",
-                  "Python",
-                  "AWS",
-                  "MongoDB",
+                  "Go",
+                  "Google Cloud",
+                  "PostgreSQL",
+                  "MySQL",
                 ].map((skill) => (
                   <span
                     key={skill}
