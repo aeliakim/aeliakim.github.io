@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
 
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("project");
@@ -84,45 +85,45 @@ export default function Portfolio() {
         <div className="container mx-auto px-6 py-4">
           <nav className="flex justify-between items-center">
             <h1 className="text-2xl font-bold bg-gradient-to-r from-rose-400 to-blue-400 bg-clip-text text-transparent">
-              Your Name
+              Desiana Fitria
             </h1>
             <div className="flex space-x-6">
-              <a
+              <Link
                 href="#about"
                 className="text-gray-700 hover:text-rose-400 transition-colors"
               >
                 About
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#skills"
                 className="text-gray-700 hover:text-rose-400 transition-colors"
               >
                 Skills
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#education"
                 className="text-gray-700 hover:text-rose-400 transition-colors"
               >
                 Education
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#certifications"
                 className="text-gray-700 hover:text-rose-400 transition-colors"
               >
                 Certifications
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#projects"
                 className="text-gray-700 hover:text-rose-400 transition-colors"
               >
                 Projects
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#contact"
                 className="text-gray-700 hover:text-rose-400 transition-colors"
               >
                 Contact
-              </a>
+              </Link>
             </div>
           </nav>
         </div>
@@ -139,17 +140,29 @@ export default function Portfolio() {
             Computing, also excited to learn new things to upgrade my skills.
           </p>
           <div className="flex justify-center space-x-4">
-            <Button className="bg-rose-400 hover:bg-rose-500 text-white">
-              <Github className="w-4 h-4 mr-2" />
-              GitHub
-            </Button>
-            <Button
-              variant="outline"
-              className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white"
+            <a
+              href="https://github.com/aeliakim"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <Linkedin className="w-4 h-4 mr-2" />
-              LinkedIn
-            </Button>
+              <Button className="bg-rose-400 hover:bg-rose-500 text-white">
+                <Github className="w-4 h-4 mr-2" />
+                GitHub
+              </Button>
+            </a>
+            <a
+              href="https://linkedin.com/in/desiana-fitria"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                variant="outline"
+                className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white"
+              >
+                <Linkedin className="w-4 h-4 mr-2" />
+                LinkedIn
+              </Button>
+            </a>
           </div>
         </div>
       </section>
@@ -710,25 +723,37 @@ export default function Portfolio() {
                       </div>
                     </div>
                     <div className="flex space-x-3">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="border-gray-400 text-gray-600 hover:bg-gray-50 text-xs"
+                      <a
+                        href={currentProjects[currentIndex]?.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        <Github className="w-3 h-3 mr-1" />
-                        Code
-                      </Button>
-                      <Button
-                        size="sm"
-                        className={`text-xs ${
-                          activeTab === "project"
-                            ? "bg-rose-400 hover:bg-rose-500"
-                            : "bg-blue-400 hover:bg-blue-500"
-                        } text-white`}
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="border-gray-400 text-gray-600 hover:bg-gray-50 text-xs"
+                        >
+                          <Github className="w-3 h-3 mr-1" />
+                          Code
+                        </Button>
+                      </a>
+                      <a
+                        href={currentProjects[currentIndex]?.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        <ExternalLink className="w-3 h-3 mr-1" />
-                        Live Demo
-                      </Button>
+                        <Button
+                          size="sm"
+                          className={`text-xs ${
+                            activeTab === "project"
+                              ? "bg-rose-400 hover:bg-rose-500"
+                              : "bg-blue-400 hover:bg-blue-500"
+                          } text-white`}
+                        >
+                          <ExternalLink className="w-3 h-3 mr-1" />
+                          Live Demo
+                        </Button>
+                      </a>
                     </div>
                     <div className="text-center mt-2">
                       <span className="text-gray-500 text-sm">
@@ -765,10 +790,12 @@ export default function Portfolio() {
             I'm always open to discussing new opportunities and interesting
             projects.
           </p>
-          <Button className="bg-gradient-to-r from-rose-400 to-blue-400 hover:from-rose-500 hover:to-blue-500 text-white">
-            <Mail className="w-4 h-4 mr-2" />
-            Contact Me
-          </Button>
+          <a href="mailto:your.email@example.com" className="inline-block">
+            <Button className="bg-gradient-to-r from-rose-400 to-blue-400 hover:from-rose-500 hover:to-blue-500 text-white">
+              <Mail className="w-4 h-4 mr-2" />
+              Contact Me
+            </Button>
+          </a>
         </div>
       </section>
 
