@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("project");
@@ -204,9 +205,14 @@ export default function Portfolio() {
               </div>
             </div>
             <div className="flex justify-center">
-              <div className="w-64 h-64 bg-gradient-to-br from-rose-200 to-blue-200 rounded-full flex items-center justify-center">
-                <span className="text-gray-500">Your Photo</span>
-              </div>
+              <Image
+                src="/images/Desiana_3x4.jpg"
+                alt="Desiana"
+                width={256}
+                height={256}
+                className="rounded-full object-cover"
+                priority
+              />
             </div>
           </div>
         </div>
@@ -227,51 +233,39 @@ export default function Portfolio() {
                 </h4>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
-                    <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mb-2">
-                      <span className="text-white font-bold text-lg">JS</span>
-                    </div>
+                    <Image
+                      src="images/skills/js-svgrepo-com.svg"
+                      alt="JavaScript"
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 object-contain"
+                    />
                     <span className="text-sm font-medium text-gray-700">
                       JavaScript
                     </span>
                   </div>
                   <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
-                    <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-2">
-                      <span className="text-white font-bold text-lg">TS</span>
-                    </div>
+                    <Image
+                      src="images/skills/html-5-svgrepo-com.svg"
+                      alt="HTML"
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 object-contain"
+                    />
                     <span className="text-sm font-medium text-gray-700">
-                      TypeScript
+                      HTML
                     </span>
                   </div>
                   <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
-                    <div className="w-12 h-12 bg-cyan-500 rounded-lg flex items-center justify-center mb-2">
-                      <span className="text-white font-bold text-lg">R</span>
-                    </div>
+                    <Image
+                      src="images/skills/css-3-svgrepo-com.svg"
+                      alt="CSS"
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 object-contain"
+                    />
                     <span className="text-sm font-medium text-gray-700">
-                      React
-                    </span>
-                  </div>
-                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
-                    <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-2">
-                      <span className="text-white font-bold text-lg">V</span>
-                    </div>
-                    <span className="text-sm font-medium text-gray-700">
-                      Vue.js
-                    </span>
-                  </div>
-                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
-                    <div className="w-12 h-12 bg-blue-400 rounded-lg flex items-center justify-center mb-2">
-                      <span className="text-white font-bold text-lg">TW</span>
-                    </div>
-                    <span className="text-sm font-medium text-gray-700">
-                      Tailwind
-                    </span>
-                  </div>
-                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
-                    <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-2">
-                      <span className="text-white font-bold text-lg">S</span>
-                    </div>
-                    <span className="text-sm font-medium text-gray-700">
-                      Sass
+                      CSS
                     </span>
                   </div>
                 </div>
