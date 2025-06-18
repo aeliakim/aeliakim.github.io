@@ -278,21 +278,30 @@ export default function Portfolio() {
                 </h4>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
-                    <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-2">
-                      <span className="text-white font-bold text-lg">N</span>
-                    </div>
+                    <Image
+                      src="images/skills/node-js-svgrepo-com.svg"
+                      alt="Node.js"
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 object-contain"
+                    />
                     <span className="text-sm font-medium text-gray-700">
                       Node.js
                     </span>
                   </div>
                   <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
-                    <div className="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center mb-2">
-                      <span className="text-white font-bold text-lg">PY</span>
-                    </div>
+                    <Image
+                      src="images/skills/go-svgrepo-com.svg"
+                      alt="Go"
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 object-contain"
+                    />
                     <span className="text-sm font-medium text-gray-700">
-                      Python
+                      Go
                     </span>
                   </div>
+
                   <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
                     <div className="w-12 h-12 bg-blue-700 rounded-lg flex items-center justify-center mb-2">
                       <span className="text-white font-bold text-lg">PG</span>
