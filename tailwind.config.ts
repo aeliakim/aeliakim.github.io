@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   darkMode: ["class"],
@@ -54,28 +54,28 @@ const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
         rose: {
-          50: "#fdf2f8",
-          100: "#fce7f3",
-          200: "#fbcfe8",
-          300: "#f9a8d4",
-          400: "#f472b6", // Rose Quartz inspired
-          500: "#ec4899",
-          600: "#db2777",
-          700: "#be185d",
-          800: "#9d174d",
-          900: "#831843",
+          50: "#fdf3f3",
+          100: "#fbe5e5",
+          200: "#f7cac9", // rose quartz primary
+          300: "#f2b0af",
+          400: "#e98280",
+          500: "#db5b58",
+          600: "#c73e3b",
+          700: "#a7312e",
+          800: "#8b2b29",
+          900: "#742a28",
         },
         blue: {
-          50: "#eff6ff",
-          100: "#dbeafe",
-          200: "#bfdbfe",
-          300: "#93c5fd",
-          400: "#60a5fa", // Serenity inspired
-          500: "#3b82f6",
-          600: "#2563eb",
-          700: "#1d4ed8",
-          800: "#1e40af",
-          900: "#1e3a8a",
+          50: "#f2f7fb",
+          100: "#e8f0f7",
+          200: "#d5e3f0",
+          300: "#bbd1e6",
+          400: "#a0b8d9",
+          500: "#92a8d1", // serenity primary
+          600: "#6f84bc",
+          700: "#5d6fa5",
+          800: "#4e5d85",
+          900: "#434e6c",
         },
       },
       borderRadius: {
@@ -100,6 +100,6 @@ const config: Config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;
