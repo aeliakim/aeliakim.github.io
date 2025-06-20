@@ -80,14 +80,12 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-rose-200 to-blue-500">
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-sm border-b border-rose-200 sticky top-0 z-50">
         <div className="container mx-auto px-6 py-4">
           <nav className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-rose-400 to-blue-400 bg-clip-text text-transparent">
-              Desiana Fitria
-            </h1>
+            <h1 className="text-2xl font-bold text-white">Desiana Fitria</h1>
             <div className="flex space-x-6">
               <Link
                 href="#about"
@@ -268,6 +266,30 @@ export default function Portfolio() {
                       CSS
                     </span>
                   </div>
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <Image
+                      src="images/skills/tailwind-svgrepo-com.svg"
+                      alt="Tailwind"
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 object-contain"
+                    />
+                    <span className="text-sm font-medium text-gray-700">
+                      Tailwind
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <Image
+                      src="images/skills/blade-ui-kit.svg"
+                      alt="Blade"
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 object-contain"
+                    />
+                    <span className="text-sm font-medium text-gray-700">
+                      Blade
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -303,35 +325,39 @@ export default function Portfolio() {
                   </div>
 
                   <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
-                    <div className="w-12 h-12 bg-blue-700 rounded-lg flex items-center justify-center mb-2">
-                      <span className="text-white font-bold text-lg">PG</span>
-                    </div>
+                    <Image
+                      src="images/skills/mysql-logo-svgrepo-com.svg"
+                      alt="MySQL"
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 object-contain"
+                    />
+                    <span className="text-sm font-medium text-gray-700">
+                      MySQL
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <Image
+                      src="images/skills/postgresql-logo-svgrepo-com.svg"
+                      alt="PostgreSQL"
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 object-contain"
+                    />
                     <span className="text-sm font-medium text-gray-700">
                       PostgreSQL
                     </span>
                   </div>
                   <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
-                    <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-2">
-                      <span className="text-white font-bold text-lg">M</span>
-                    </div>
+                    <Image
+                      src="images/skills/laravel-1-logo-svgrepo-com.svg"
+                      alt="Laravel"
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 object-contain"
+                    />
                     <span className="text-sm font-medium text-gray-700">
-                      MongoDB
-                    </span>
-                  </div>
-                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
-                    <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-2">
-                      <span className="text-white font-bold text-lg">E</span>
-                    </div>
-                    <span className="text-sm font-medium text-gray-700">
-                      Express
-                    </span>
-                  </div>
-                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
-                    <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center mb-2">
-                      <span className="text-white font-bold text-lg">FB</span>
-                    </div>
-                    <span className="text-sm font-medium text-gray-700">
-                      Firebase
+                      Laravel
                     </span>
                   </div>
                 </div>
@@ -344,49 +370,49 @@ export default function Portfolio() {
                 </h4>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
-                    <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center mb-2">
-                      <span className="text-white font-bold text-lg">Git</span>
-                    </div>
+                    <Image
+                      src="images/skills/google-cloud-svgrepo-com.svg"
+                      alt="Google Cloud"
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 object-contain"
+                    />
                     <span className="text-sm font-medium text-gray-700">
-                      Git
+                      Google Cloud
                     </span>
                   </div>
                   <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
-                    <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-2">
-                      <span className="text-white font-bold text-lg">D</span>
-                    </div>
-                    <span className="text-sm font-medium text-gray-700">
-                      Docker
-                    </span>
-                  </div>
-                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
-                    <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mb-2">
-                      <span className="text-white font-bold text-lg">AWS</span>
-                    </div>
-                    <span className="text-sm font-medium text-gray-700">
-                      AWS
-                    </span>
-                  </div>
-                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
-                    <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mb-2">
-                      <span className="text-white font-bold text-lg">F</span>
-                    </div>
-                    <span className="text-sm font-medium text-gray-700">
-                      Figma
-                    </span>
-                  </div>
-                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
-                    <div className="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center mb-2">
-                      <span className="text-white font-bold text-lg">VS</span>
-                    </div>
+                    <Image
+                      src="images/skills/vs-code-svgrepo-com.svg"
+                      alt="VS Code"
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 object-contain"
+                    />
                     <span className="text-sm font-medium text-gray-700">
                       VS Code
                     </span>
                   </div>
                   <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
-                    <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-2">
-                      <span className="text-white font-bold text-lg">PM</span>
-                    </div>
+                    <Image
+                      src="images/skills/git-svgrepo-com.svg"
+                      alt="Git"
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 object-contain"
+                    />
+                    <span className="text-sm font-medium text-gray-700">
+                      Git
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
+                    <Image
+                      src="images/skills/postman-icon-svgrepo-com.svg"
+                      alt="Postman"
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 object-contain"
+                    />
                     <span className="text-sm font-medium text-gray-700">
                       Postman
                     </span>
@@ -410,14 +436,14 @@ export default function Portfolio() {
                 <div className="flex flex-col md:flex-row md:justify-between md:items-start">
                   <div className="flex-1">
                     <h4 className="text-xl font-semibold text-gray-800 mb-2">
-                      Bachelor of Computer Science
+                      Bachelor of Computer Engineering
                     </h4>
                     <p className="text-rose-600 font-medium mb-2">
-                      University Name
+                      Sepuluh Nopember Institute of Technology
                     </p>
                     <p className="text-gray-600 mb-3">
-                      Focused on software engineering, data structures, and
-                      algorithms. Graduated with honors.
+                      GPA: 3.44/4.00. Focused on software engineering, data
+                      structures, and algorithms.
                     </p>
                     <div className="flex flex-wrap gap-2">
                       <span className="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm">
