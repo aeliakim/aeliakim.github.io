@@ -10,6 +10,7 @@ const config: Config = {
     "*.{js,ts,jsx,tsx,mdx}",
   ],
   prefix: "",
+  safelist: ["bg-seventeen"],
   theme: {
     container: {
       center: true,
@@ -54,29 +55,32 @@ const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
         rose: {
-          50: "#fdf3f3",
-          100: "#fbe5e5",
-          200: "#f7cac9", // rose quartz primary
-          300: "#f2b0af",
-          400: "#e98280",
-          500: "#db5b58",
-          600: "#c73e3b",
-          700: "#a7312e",
-          800: "#8b2b29",
-          900: "#742a28",
+          50: "#fdf6f6",
+          100: "#faeaea",
+          200: "#f7d8d8", // text-muted or bg-soft
+          300: "#f4c1c1",
+          400: "#eba1a1", // soft text
+          500: "#df7d7d", // ✅ main accent color (for text/buttons)
+          600: "#cb5a5a", // hover
+          700: "#a94545", // active
+          800: "#883838",
+          900: "#6e2d2d",
         },
         blue: {
-          50: "#f2f7fb",
-          100: "#e8f0f7",
-          200: "#d5e3f0",
-          300: "#bbd1e6",
-          400: "#a0b8d9",
-          500: "#92a8d1", // serenity primary
-          600: "#6f84bc",
-          700: "#5d6fa5",
-          800: "#4e5d85",
-          900: "#434e6c",
+          50: "#f4f8fb",
+          100: "#e8eff7",
+          200: "#d6e3f0", // text-muted or subtle background
+          300: "#bfd0e8",
+          400: "#a9bcd9", // soft blue
+          500: "#8ca3c9", // ✅ main accent color (for text/buttons)
+          600: "#6e86af", // hover
+          700: "#596f96", // active
+          800: "#475b78",
+          900: "#38475f",
         },
+      },
+      backgroundImage: {
+        seventeen: "linear-gradient(135deg, #f7cac9 0%, #92a8d1 100%)",
       },
       borderRadius: {
         lg: "var(--radius)",

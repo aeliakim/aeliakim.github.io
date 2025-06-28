@@ -80,12 +80,17 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-200 to-blue-500">
+    <div
+      className="min-h-screen"
+      style={{ background: "linear-gradient(135deg, #f7cac9, #92a8d1)" }}
+    >
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-sm border-b border-rose-200 sticky top-0 z-50">
         <div className="container mx-auto px-6 py-4">
           <nav className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold text-white">Desiana Fitria</h1>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-rose-400 to-blue-400 bg-clip-text text-transparent">
+              Desiana Fitria
+            </h1>
             <div className="flex space-x-6">
               <Link
                 href="#about"
@@ -131,7 +136,7 @@ export default function Portfolio() {
       {/* Hero Section */}
       <section className="py-20 px-6">
         <div className="container mx-auto text-center">
-          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-rose-400 to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold mb-6 text-white">
             Hello, I'm Desiana Fitria
           </h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
@@ -195,7 +200,7 @@ export default function Portfolio() {
                 ].map((skill) => (
                   <span
                     key={skill}
-                    className="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm"
+                    className="px-3 py-1 bg-rose-200 text-rose-700 rounded-full text-sm"
                   >
                     {skill}
                   </span>
@@ -219,7 +224,7 @@ export default function Portfolio() {
       {/* Skills Section */}
       <section id="skills" className="py-20 px-6">
         <div className="container mx-auto">
-          <h3 className="text-3xl font-bold text-center mb-12 text-gray-800">
+          <h3 className="text-3xl font-bold text-center mb-12 text-white">
             Skills & Technologies
           </h3>
           <div className="max-w-6xl mx-auto">
@@ -442,8 +447,8 @@ export default function Portfolio() {
                       Sepuluh Nopember Institute of Technology
                     </p>
                     <p className="text-gray-600 mb-3">
-                      GPA: 3.44/4.00. Focused on software engineering, data
-                      structures, and algorithms.
+                      GPA: 3.44/4.00. Focused on software engineering,
+                      algorithms, and data structures.
                     </p>
                     <div className="flex flex-wrap gap-2">
                       <span className="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm">
@@ -469,30 +474,30 @@ export default function Portfolio() {
                 <div className="flex flex-col md:flex-row md:justify-between md:items-start">
                   <div className="flex-1">
                     <h4 className="text-xl font-semibold text-gray-800 mb-2">
-                      Full Stack Web Development Bootcamp
+                      Bangkit Academy 2024 Batch 1
                     </h4>
                     <p className="text-blue-600 font-medium mb-2">
-                      Coding Academy
+                      Bangkit by Google, GoTo, and Traveloka
                     </p>
                     <p className="text-gray-600 mb-3">
-                      Intensive program covering modern web development
-                      technologies and best practices.
+                      Intensive program covering cloud computing technologies
+                      and best practices.
                     </p>
                     <div className="flex flex-wrap gap-2">
                       <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
-                        MERN Stack
+                        Web Development
                       </span>
                       <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
-                        Agile Development
+                        Cloud Computing
                       </span>
                       <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
-                        Project Management
+                        Backend Development
                       </span>
                     </div>
                   </div>
                   <div className="mt-4 md:mt-0 md:ml-6">
                     <span className="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">
-                      2023
+                      2024
                     </span>
                   </div>
                 </div>
@@ -505,7 +510,7 @@ export default function Portfolio() {
       {/* Certifications Section */}
       <section id="certifications" className="py-20 px-6">
         <div className="container mx-auto">
-          <h3 className="text-3xl font-bold text-center mb-12 text-gray-800">
+          <h3 className="text-3xl font-bold text-center mb-12 text-white">
             Certifications
           </h3>
           <div className="max-w-6xl mx-auto">
@@ -659,7 +664,7 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-6">
+      <section id="projects" className="py-20 px-6 bg-white/50">
         <div className="container mx-auto">
           <div className="mb-12">
             <div className="flex justify-between items-center mb-8">
@@ -810,12 +815,10 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 bg-white/50">
+      <section id="contact" className="py-20 px-6">
         <div className="container mx-auto text-center">
-          <h3 className="text-3xl font-bold mb-8 text-gray-800">
-            Get In Touch
-          </h3>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <h3 className="text-3xl font-bold mb-8 text-white">Get In Touch</h3>
+          <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
             I'm always open to discussing new opportunities and interesting
             projects.
           </p>
