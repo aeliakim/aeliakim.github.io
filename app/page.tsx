@@ -474,7 +474,7 @@ export default function Portfolio() {
                 <div className="flex flex-col md:flex-row md:justify-between md:items-start">
                   <div className="flex-1">
                     <h4 className="text-xl font-semibold text-gray-800 mb-2">
-                      Bangkit Academy 2024 Batch 1
+                      Bangkit Academy 2023 Batch 1
                     </h4>
                     <p className="text-blue-600 font-medium mb-2">
                       Bangkit by Google, GoTo, and Traveloka
@@ -497,7 +497,7 @@ export default function Portfolio() {
                   </div>
                   <div className="mt-4 md:mt-0 md:ml-6">
                     <span className="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">
-                      2024
+                      2023
                     </span>
                   </div>
                 </div>
@@ -511,42 +511,88 @@ export default function Portfolio() {
       <section id="certifications" className="py-20 px-6">
         <div className="container mx-auto">
           <h3 className="text-3xl font-bold text-center mb-12 text-white">
-            Certifications
+            Course Certifications
           </h3>
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-rose-400 to-rose-500 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">AWS</span>
-                  </div>
+                  <Image
+                    src="/images/certifications/dibimbing_id_logo.jpeg"
+                    alt="Dibimbing.id"
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 object-contain"
+                  />
                   <div className="ml-4">
-                    <h4 className="font-semibold text-gray-800">
-                      AWS Certified Developer
-                    </h4>
-                    <p className="text-sm text-gray-500">Amazon Web Services</p>
+                    <h4 className="font-semibold text-gray-800">Golang</h4>
+                    <p className="text-sm text-gray-500">Dibimbing.id</p>
                   </div>
                 </div>
                 <p className="text-gray-600 text-sm mb-3">
-                  Demonstrates expertise in developing and maintaining
-                  applications on AWS platform.
+                  Comprehensive bootcamp certification covering Golang
+                  fundamentals.
                 </p>
                 <div className="flex justify-between items-center">
                   <span className="text-xs text-gray-500">Issued: 2024</span>
-                  <Button variant="outline" size="sm" className="text-xs">
-                    View Certificate
-                  </Button>
+                  <a
+                    href="https://dibimbing-lms-dev.s3.ap-southeast-1.amazonaws.com/production/digital-skill-fair/096600ab-33c1-46e8-b1aa-bb44955c0de7.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button variant="outline" size="sm" className="text-xs">
+                      View Certificate
+                    </Button>
+                  </a>
                 </div>
               </div>
 
               <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-500 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">GCP</span>
-                  </div>
+                  <Image
+                    src="/images/certifications/revou.png"
+                    alt="RevoU"
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 object-contain"
+                  />
                   <div className="ml-4">
                     <h4 className="font-semibold text-gray-800">
-                      Google Cloud Professional
+                      Software Engineer
+                    </h4>
+                    <p className="text-sm text-gray-500">RevoU</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 text-sm mb-3">
+                  Comprehensive bootcamp certification covering software
+                  engineering fundamentals.
+                </p>
+                <div className="flex justify-between items-center">
+                  <span className="text-xs text-gray-500">Issued: 2024</span>
+                  <a
+                    href="https://drive.google.com/file/d/1zr9Qyb-WEomYHDPmy8ttBMBZrdEX0Cyy/view"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button variant="outline" size="sm" className="text-xs">
+                      View Certificate
+                    </Button>
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                <div className="flex items-center mb-4">
+                  <Image
+                    src="/images/skills/google-cloud-svgrepo-com.svg"
+                    alt="Google Cloud"
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 object-contain"
+                  />
+                  <div className="ml-4">
+                    <h4 className="font-semibold text-gray-800">
+                      Associate Cloud Engineer
                     </h4>
                     <p className="text-sm text-gray-500">
                       Google Cloud Platform
@@ -554,108 +600,221 @@ export default function Portfolio() {
                   </div>
                 </div>
                 <p className="text-gray-600 text-sm mb-3">
-                  Professional-level certification for cloud architecture and
+                  Demonstrates experience in developing and maintaining
+                  applications on GCP.
+                </p>
+                <div className="flex justify-between items-center">
+                  <span className="text-xs text-gray-500">Issued: 2023</span>
+                  <a
+                    href="https://www.credly.com/badges/d57dc8d1-2de9-4859-aa23-dfa082dda9eb"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button variant="outline" size="sm" className="text-xs">
+                      View Certificate
+                    </Button>
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                <div className="flex items-center mb-4">
+                  <Image
+                    src="/images/certifications/dicoding.png"
+                    alt="Dicoding"
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 object-contain"
+                  />
+                  <div className="ml-4">
+                    <h4 className="font-semibold text-gray-800">
+                      Web Development
+                    </h4>
+                    <p className="text-sm text-gray-500">Dicoding</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 text-sm mb-3">
+                  Comprehensive certification covering fundamentals of web
                   development.
                 </p>
                 <div className="flex justify-between items-center">
                   <span className="text-xs text-gray-500">Issued: 2023</span>
-                  <Button variant="outline" size="sm" className="text-xs">
-                    View Certificate
-                  </Button>
+                  <a
+                    href="https://www.dicoding.com/certificates/L4PQ6K2JVPO1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button variant="outline" size="sm" className="text-xs">
+                      View Certificate
+                    </Button>
+                  </a>
                 </div>
               </div>
 
               <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-500 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">JS</span>
-                  </div>
+                  <Image
+                    src="/images/certifications/dicoding.png"
+                    alt="Dicoding"
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 object-contain"
+                  />
                   <div className="ml-4">
-                    <h4 className="font-semibold text-gray-800">
-                      JavaScript Algorithms
-                    </h4>
-                    <p className="text-sm text-gray-500">freeCodeCamp</p>
+                    <h4 className="font-semibold text-gray-800">JavaScript</h4>
+                    <p className="text-sm text-gray-500">Dicoding</p>
                   </div>
                 </div>
                 <p className="text-gray-600 text-sm mb-3">
-                  Comprehensive certification covering JavaScript fundamentals
-                  and data structures.
+                  Comprehensive certification covering JavaScript fundamentals.
                 </p>
                 <div className="flex justify-between items-center">
                   <span className="text-xs text-gray-500">Issued: 2023</span>
-                  <Button variant="outline" size="sm" className="text-xs">
-                    View Certificate
-                  </Button>
+                  <a
+                    href="https://www.dicoding.com/certificates/QLZ92WR7DX5D"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button variant="outline" size="sm" className="text-xs">
+                      View Certificate
+                    </Button>
+                  </a>
                 </div>
               </div>
 
               <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-500 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">RX</span>
-                  </div>
+                  <Image
+                    src="/images/certifications/dicoding.png"
+                    alt="Dicoding"
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 object-contain"
+                  />
                   <div className="ml-4">
                     <h4 className="font-semibold text-gray-800">
-                      React Developer
+                      Back-End with Google Cloud
                     </h4>
-                    <p className="text-sm text-gray-500">Meta</p>
+                    <p className="text-sm text-gray-500">Dicoding</p>
                   </div>
                 </div>
                 <p className="text-gray-600 text-sm mb-3">
-                  Professional certification for React development and modern
-                  frontend practices.
-                </p>
-                <div className="flex justify-between items-center">
-                  <span className="text-xs text-gray-500">Issued: 2024</span>
-                  <Button variant="outline" size="sm" className="text-xs">
-                    View Certificate
-                  </Button>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-500 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">UX</span>
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="font-semibold text-gray-800">UX Design</h4>
-                    <p className="text-sm text-gray-500">Google</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 text-sm mb-3">
-                  Comprehensive program covering user experience design
-                  principles and practices.
+                  Comprehensive certification covering Back-End development with
+                  Google Cloud.
                 </p>
                 <div className="flex justify-between items-center">
                   <span className="text-xs text-gray-500">Issued: 2023</span>
-                  <Button variant="outline" size="sm" className="text-xs">
-                    View Certificate
-                  </Button>
+                  <a
+                    href="https://www.dicoding.com/certificates/1RXYOK32KPVM"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button variant="outline" size="sm" className="text-xs">
+                      View Certificate
+                    </Button>
+                  </a>
                 </div>
               </div>
 
               <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-400 to-indigo-500 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">PM</span>
-                  </div>
+                  <Image
+                    src="/images/certifications/dicoding.png"
+                    alt="Dicoding"
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 object-contain"
+                  />
                   <div className="ml-4">
                     <h4 className="font-semibold text-gray-800">
-                      Project Management
+                      Google Cloud Engineer
                     </h4>
-                    <p className="text-sm text-gray-500">PMI</p>
+                    <p className="text-sm text-gray-500">Dicoding</p>
                   </div>
                 </div>
                 <p className="text-gray-600 text-sm mb-3">
-                  Professional certification in project management methodologies
-                  and best practices.
+                  Comprehensive certification covering cloud computing with
+                  Google Cloud.
                 </p>
                 <div className="flex justify-between items-center">
-                  <span className="text-xs text-gray-500">Issued: 2024</span>
-                  <Button variant="outline" size="sm" className="text-xs">
-                    View Certificate
-                  </Button>
+                  <span className="text-xs text-gray-500">Issued: 2023</span>
+                  <a
+                    href="https://www.dicoding.com/certificates/1RXYOK32KPVM"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button variant="outline" size="sm" className="text-xs">
+                      View Certificate
+                    </Button>
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                <div className="flex items-center mb-4">
+                  <Image
+                    src="/images/certifications/Coursera-Logo_600x600.svg.png"
+                    alt="Coursera"
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 object-contain"
+                  />
+                  <div className="ml-4">
+                    <h4 className="font-semibold text-gray-800">
+                      System Administration and IT Infastructure Services
+                    </h4>
+                    <p className="text-sm text-gray-500">Coursera</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 text-sm mb-3">
+                  Comprehensive certification covering system administration and
+                  IT infrastructures.
+                </p>
+                <div className="flex justify-between items-center">
+                  <span className="text-xs text-gray-500">Issued: 2023</span>
+                  <a
+                    href="https://coursera.org/share/9349a9eb1a7947ed58463fc4576afe72"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button variant="outline" size="sm" className="text-xs">
+                      View Certificate
+                    </Button>
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                <div className="flex items-center mb-4">
+                  <Image
+                    src="/images/certifications/Coursera-Logo_600x600.svg.png"
+                    alt="Coursera"
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 object-contain"
+                  />
+                  <div className="ml-4">
+                    <h4 className="font-semibold text-gray-800">
+                      Computer Networking
+                    </h4>
+                    <p className="text-sm text-gray-500">Coursera</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 text-sm mb-3">
+                  Comprehensive certification covering fundamental of modern
+                  networking technologies and protocols.
+                </p>
+                <div className="flex justify-between items-center">
+                  <span className="text-xs text-gray-500">Issued: 2023</span>
+                  <a
+                    href="https://coursera.org/share/20ddca978baa573ef3542a6116c12b6d"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button variant="outline" size="sm" className="text-xs">
+                      View Certificate
+                    </Button>
+                  </a>
                 </div>
               </div>
             </div>
