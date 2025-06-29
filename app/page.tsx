@@ -8,6 +8,8 @@ import {
   Linkedin,
   Mail,
   ExternalLink,
+  Menu as MenuIcon,
+  X as CloseIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -19,6 +21,7 @@ export default function Portfolio() {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [currentMiniProjectIndex, setCurrentMiniProjectIndex] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const projects = [
     {
@@ -126,19 +129,40 @@ export default function Portfolio() {
 
   const hasMultipleImages = currentImages.length > 1;
 
+  // Handle ESC key and outside click to close mobile menu
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileMenuOpen(false);
+    };
+    const handleClick = (e: MouseEvent) => {
+      const menu = document.getElementById("mobile-nav-dropdown");
+      if (menu && !menu.contains(e.target as Node)) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleEsc);
+    window.addEventListener("mousedown", handleClick);
+    return () => {
+      window.removeEventListener("keydown", handleEsc);
+      window.removeEventListener("mousedown", handleClick);
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <div
       className="min-h-screen"
       style={{ background: "linear-gradient(135deg, #f7cac9, #92a8d1)" }}
     >
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b border-rose-200 sticky top-0 z-50">
-        <div className="container mx-auto px-6 py-4">
-          <nav className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-rose-400 to-blue-400 bg-clip-text text-transparent">
+      <header className="bg-white/80 backdrop-blur-sm border-b border-rose-200 sticky top-0 z-[60]">
+        <div className="container mx-auto px-4 py-4">
+          <nav className="flex flex-col md:flex-row md:justify-between md:items-center relative">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-rose-400 to-blue-400 bg-clip-text text-transparent mb-4 md:mb-0">
               Desiana Fitria
             </h1>
-            <div className="flex space-x-6">
+            {/* Desktop Nav */}
+            <div className="hidden md:flex md:flex-row md:space-x-6 w-full md:w-auto">
               <Link
                 href="#about"
                 className="text-gray-700 hover:text-rose-400 transition-colors"
@@ -182,28 +206,99 @@ export default function Portfolio() {
                 Contact
               </Link>
             </div>
+            {/* Hamburger Icon (Mobile) */}
+            <button
+              className="md:hidden absolute right-0 top-2 text-gray-700 p-2"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              onClick={() => setMobileMenuOpen((open) => !open)}
+            >
+              {mobileMenuOpen ? (
+                <CloseIcon className="w-7 h-7" />
+              ) : (
+                <MenuIcon className="w-7 h-7" />
+              )}
+            </button>
+            {/* Simple Mobile Dropdown Menu */}
+            {mobileMenuOpen && (
+              <div
+                id="mobile-nav-dropdown"
+                className="md:hidden absolute top-full right-0 mt-2 w-56 bg-white shadow-lg rounded-lg py-4 px-6 flex flex-col space-y-4 z-[100]"
+                role="menu"
+                aria-label="Mobile navigation menu"
+              >
+                <Link
+                  href="#about"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-gray-700 hover:text-rose-400 transition-colors"
+                >
+                  About
+                </Link>
+                <Link
+                  href="#skills"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-gray-700 hover:text-rose-400 transition-colors"
+                >
+                  Skills
+                </Link>
+                <Link
+                  href="#education"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-gray-700 hover:text-rose-400 transition-colors"
+                >
+                  Education
+                </Link>
+                <Link
+                  href="#work"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-gray-700 hover:text-rose-400 transition-colors"
+                >
+                  Work Experience
+                </Link>
+                <Link
+                  href="#certifications"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-gray-700 hover:text-rose-400 transition-colors"
+                >
+                  Certifications
+                </Link>
+                <Link
+                  href="#projects"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-gray-700 hover:text-rose-400 transition-colors"
+                >
+                  Projects
+                </Link>
+                <Link
+                  href="#contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-gray-700 hover:text-rose-400 transition-colors"
+                >
+                  Contact
+                </Link>
+              </div>
+            )}
           </nav>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 px-6">
+      <section className="py-16 px-4 sm:py-20 sm:px-6">
         <div className="container mx-auto text-center">
-          <h2 className="text-5xl font-bold mb-6 text-white">
+          <h2 className="text-3xl sm:text-5xl font-bold mb-6 text-white">
             Hello, I&apos;m Desiana Fitria
           </h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             I&apos;m a passionate developer, mainly interested in Back-End and
             Cloud Computing, also excited to learn new things to upgrade my
             skills.
           </p>
-          <div className="flex justify-center space-x-4">
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-4">
             <a
               href="https://github.com/aeliakim"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button className="bg-rose-400 hover:bg-rose-500 text-white">
+              <Button className="bg-rose-400 hover:bg-rose-500 text-white w-full sm:w-auto">
                 <Github className="w-4 h-4 mr-2" />
                 GitHub
               </Button>
@@ -215,7 +310,7 @@ export default function Portfolio() {
             >
               <Button
                 variant="outline"
-                className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white"
+                className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white w-full sm:w-auto"
               >
                 <Linkedin className="w-4 h-4 mr-2" />
                 LinkedIn
@@ -226,19 +321,19 @@ export default function Portfolio() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-6 bg-white/50">
+      <section id="about" className="py-16 px-4 sm:py-20 sm:px-6 bg-white/50">
         <div className="container mx-auto">
-          <h3 className="text-3xl font-bold text-center mb-12 text-gray-800">
+          <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-gray-800">
             About Me
           </h3>
-          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
             <div>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 mb-4 sm:mb-6 text-base sm:text-lg">
                 I&apos;m a passionate web developer with experience in back-end
                 and cloud computing technologies. I love creating tools that can
                 accomodate my hobbies and solve real-world problems.
               </p>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 mb-4 sm:mb-6 text-base sm:text-lg">
                 With a background in computer engineering and several hands-on
                 projects experience, I specialize in Node.js, Go, and cloud
                 technologies.
@@ -265,9 +360,9 @@ export default function Portfolio() {
               <Image
                 src="/images/Desiana_3x4.jpg"
                 alt="Desiana"
-                width={256}
-                height={256}
-                className="rounded-full object-cover"
+                width={192}
+                height={192}
+                className="rounded-full object-cover w-40 h-40 sm:w-64 sm:h-64"
                 priority
               />
             </div>
@@ -276,19 +371,19 @@ export default function Portfolio() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 px-6">
+      <section id="skills" className="py-16 px-4 sm:py-20 sm:px-6">
         <div className="container mx-auto">
-          <h3 className="text-3xl font-bold text-center mb-12 text-white">
+          <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-white">
             Skills & Technologies
           </h3>
           <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
               {/* Frontend */}
-              <div className="bg-white/70 backdrop-blur-sm rounded-lg p-6 border border-rose-200">
-                <h4 className="text-xl font-semibold mb-6 text-rose-600 text-center">
+              <div className="bg-white/70 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-rose-200">
+                <h4 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-rose-600 text-center">
                   Frontend
                 </h4>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
                     <Image
                       src="images/skills/js-svgrepo-com.svg"
@@ -353,11 +448,11 @@ export default function Portfolio() {
               </div>
 
               {/* Backend */}
-              <div className="bg-white/70 backdrop-blur-sm rounded-lg p-6 border border-blue-200">
-                <h4 className="text-xl font-semibold mb-6 text-blue-600 text-center">
+              <div className="bg-white/70 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-blue-200">
+                <h4 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-blue-600 text-center">
                   Backend
                 </h4>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
                     <Image
                       src="images/skills/node-js-svgrepo-com.svg"
@@ -423,11 +518,11 @@ export default function Portfolio() {
               </div>
 
               {/* Tools & Others */}
-              <div className="bg-white/70 backdrop-blur-sm rounded-lg p-6 border border-purple-200">
-                <h4 className="text-xl font-semibold mb-6 text-purple-600 text-center">
+              <div className="bg-white/70 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-purple-200">
+                <h4 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-purple-600 text-center">
                   Tools & Others
                 </h4>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   <div className="flex flex-col items-center p-4 bg-white/50 rounded-lg hover:bg-white/80 transition-colors">
                     <Image
                       src="images/skills/google-cloud-svgrepo-com.svg"
@@ -484,13 +579,16 @@ export default function Portfolio() {
       </section>
 
       {/* Education Section */}
-      <section id="education" className="py-20 px-6 bg-white/50">
+      <section
+        id="education"
+        className="py-16 px-4 sm:py-20 sm:px-6 bg-white/50"
+      >
         <div className="container mx-auto">
-          <h3 className="text-3xl font-bold text-center mb-12 text-gray-800">
+          <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-gray-800">
             Education
           </h3>
           <div className="max-w-4xl mx-auto">
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-rose-400">
                 <div className="flex flex-col md:flex-row md:justify-between md:items-start">
                   <div className="flex-1">
@@ -562,13 +660,13 @@ export default function Portfolio() {
       </section>
 
       {/* Work Section */}
-      <section id="work" className="py-20 px-6 bg-white/50">
+      <section id="work" className="py-16 px-4 sm:py-20 sm:px-6 bg-white/50">
         <div className="container mx-auto">
-          <h3 className="text-3xl font-bold text-center mb-12 text-gray-800">
+          <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-gray-800">
             Work Experience
           </h3>
           <div className="max-w-4xl mx-auto">
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-rose-400">
                 <div className="flex flex-col md:flex-row md:justify-between md:items-start">
                   <div className="flex-1">
@@ -619,13 +717,13 @@ export default function Portfolio() {
       </section>
 
       {/* Certifications Section */}
-      <section id="certifications" className="py-20 px-6">
+      <section id="certifications" className="py-16 px-4 sm:py-20 sm:px-6">
         <div className="container mx-auto">
-          <h3 className="text-3xl font-bold text-center mb-12 text-white">
+          <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-white">
             Course Certifications
           </h3>
           <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
                 <div className="flex items-center mb-4">
                   <Image
@@ -934,11 +1032,16 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-6 bg-white/50">
+      <section
+        id="projects"
+        className="py-16 px-4 sm:py-20 sm:px-6 bg-white/50"
+      >
         <div className="container mx-auto">
-          <div className="mb-12">
-            <div className="flex justify-between items-center mb-8">
-              <h3 className="text-3xl font-bold text-gray-800">Projects</h3>
+          <div className="mb-8 sm:mb-12">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 gap-4 sm:gap-0">
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-800">
+                Projects
+              </h3>
               <div className="flex space-x-1 bg-white rounded-lg p-1 shadow-sm border">
                 <button
                   onClick={() => setActiveTab("project")}
@@ -962,12 +1065,9 @@ export default function Portfolio() {
                 </button>
               </div>
             </div>
-
             <div className="border-t-4 border-gray-800 mb-8"></div>
-
-            {/* Blur container that holds everything */}
-            <div className="bg-white/30 backdrop-blur-sm rounded-3xl p-8 border border-white/50 shadow-lg">
-              <div className="flex items-center justify-center gap-8">
+            <div className="bg-white/30 backdrop-blur-sm rounded-3xl p-4 sm:p-8 border border-white/50 shadow-lg">
+              <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-8">
                 {/* Left Arrow */}
                 <div className="flex flex-col items-center">
                   <Button
@@ -1115,14 +1215,16 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6">
+      <section id="contact" className="py-16 px-4 sm:py-20 sm:px-6">
         <div className="container mx-auto text-center">
-          <h3 className="text-3xl font-bold mb-8 text-white">Get In Touch</h3>
-          <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
+          <h3 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-white">
+            Get In Touch
+          </h3>
+          <p className="text-base sm:text-xl text-white mb-6 sm:mb-8 max-w-2xl mx-auto">
             I&apos;m always open to discussing new opportunities and interesting
             projects.
           </p>
-          <div className="flex justify-center space-x-2">
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-2">
             <a href="mailto:desianadf01@gmail.com" className="inline-block">
               <Button className="bg-gradient-to-r from-rose-400 to-blue-400 hover:from-rose-500 hover:to-blue-500 text-white">
                 <Mail className="w-4 h-4 mr-2" />
