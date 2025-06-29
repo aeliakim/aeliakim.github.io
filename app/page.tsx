@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ChevronLeft,
   ChevronRight,
@@ -18,46 +18,73 @@ export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("project");
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [currentMiniProjectIndex, setCurrentMiniProjectIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const projects = [
     {
-      title: "E-Commerce Platform",
+      title: "Stock & Warehouse Management",
       description:
-        "A full-stack e-commerce solution built with React, Node.js, and MongoDB. Features include user authentication, payment processing, and admin dashboard.",
-      image: "/placeholder.svg?height=400&width=600",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-      github: "https://github.com",
-      live: "https://example.com",
+        "A full-stack web to manage stocks and warehouses built with Laravel, Alpine.js, and PostgreSQL. Features include user authentication, admin dashboard, stock management, and warehouse management. Built for CV. Ovaplast.",
+      image: [
+        "/images/projects/project/gudang_ovaplast.png",
+        "/images/projects/project/gudang_dashboard.png",
+      ],
+      technologies: ["Laravel", "Tailwind CSS", "Alpine.js", "PostgreSQL"],
+      live: "https://gudang.ovaplast.com/",
     },
     {
-      title: "Task Management App",
+      title: "PRAMASTI (Praktikum Management System)",
       description:
-        "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-      image: "/placeholder.svg?height=400&width=600",
-      technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-      github: "https://github.com",
-      live: "https://example.com",
+        "Website for managing practicum in Department of Computer Engineering. It has 5 different roles for the students, teachers, and the staff in the department to apply or manage the practicum. This website is made for academic project in Computer Engineering ITS.",
+      image: [
+        "/images/projects/project/Login.png",
+        "/images/projects/project/Home_Praktikan.png",
+        "/images/projects/project/Jadwal_Praktikum.png",
+      ],
+      technologies: ["React", "Express.js", "MySQL"],
+      github: "https://github.com/aeliakim/pramasti-api",
+    },
+    {
+      title: "TENAN (Teman Perjalanan)",
+      description:
+        "App for providing guide for tourist about tourisms place and hotels around it. The app was created for capstone project in Bangkit Academy 2023 Batch 1.",
+      image: [
+        "/images/projects/project/Home_Screen.png",
+        "/images/projects/project/Story_Detail.png",
+      ],
+      technologies: ["Express.js", "MySQL", "Google Cloud"],
+      github: "https://github.com/C23-PC620/tenan-api",
     },
   ];
 
   const miniProjects = [
     {
-      title: "Weather Widget",
+      title: "SEVENTEEN Discord Bot",
       description:
-        "A responsive weather widget that displays current weather conditions and forecasts using OpenWeather API.",
-      image: "/placeholder.svg?height=300&width=400",
-      technologies: ["JavaScript", "CSS3", "Weather API"],
-      github: "https://github.com",
-      live: "https://example.com",
+        "A Discord bot designed to automatically fetch and post the latest updates from SEVENTEEN's social media account directly to a specified Discord channel. It aims to keep fans updated in real-time without needing to constantly check the official account. Currently, this bot fetch the updates from SEVENTEEN's X (Twitter) official account.",
+      image: [
+        "/images/projects/miniproject/bot_profile(1).png",
+        "/images/projects/miniproject/bot_message.png",
+      ],
+      technologies: ["JavaScript", "Discord.js", "Twitter API"],
+      github: "https://github.com/aeliakim/seventeen-discord-bot",
     },
     {
-      title: "Color Palette Generator",
+      title: "Mini Library",
       description:
-        "A tool for generating harmonious color palettes for design projects with export functionality.",
-      image: "/placeholder.svg?height=300&width=400",
-      technologies: ["React", "Color Theory", "CSS"],
-      github: "https://github.com",
-      live: "https://example.com",
+        "A basic web-based library management system built with Go (Golang) that allows users to add, view, and delete books. The application stores book data in a JSON file and provides a simple web interface.",
+      image: ["/images/projects/miniproject/library.png"],
+      technologies: ["Go", "HTML", "CSS"],
+      github: "https://github.com/aeliakim/LibraryMiniProject-Golang",
+    },
+    {
+      title: "BMI Calculator",
+      description:
+        "A simple and user-friendly Body Mass Index (BMI) calculator web application built with HTML, CSS, and JavaScript.",
+      image: ["/images/projects/miniproject/bmi.png"],
+      technologies: ["JavaScript", "HTML", "CSS"],
+      github: "https://github.com/revou-fundamental-course/28-oct-24-aeliakim",
+      live: "https://revou-fundamental-course.github.io/28-oct-24-aeliakim/",
     },
   ];
 
@@ -78,6 +105,26 @@ export default function Portfolio() {
       (prev) => (prev - 1 + currentProjects.length) % currentProjects.length
     );
   };
+
+  useEffect(() => {
+    setCurrentImageIndex(0);
+  }, [currentIndex, activeTab]);
+
+  const nextImage = () => {
+    const images = currentProjects[currentIndex]?.image || [];
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = () => {
+    const images = currentProjects[currentIndex]?.image || [];
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const currentImages = Array.isArray(currentProjects[currentIndex]?.image)
+    ? currentProjects[currentIndex]?.image
+    : [currentProjects[currentIndex]?.image];
+
+  const hasMultipleImages = currentImages.length > 1;
 
   return (
     <div
@@ -111,6 +158,12 @@ export default function Portfolio() {
                 Education
               </Link>
               <Link
+                href="#work"
+                className="text-gray-700 hover:text-rose-400 transition-colors"
+              >
+                Work Experience
+              </Link>
+              <Link
                 href="#certifications"
                 className="text-gray-700 hover:text-rose-400 transition-colors"
               >
@@ -137,11 +190,12 @@ export default function Portfolio() {
       <section className="py-20 px-6">
         <div className="container mx-auto text-center">
           <h2 className="text-5xl font-bold mb-6 text-white">
-            Hello, I'm Desiana Fitria
+            Hello, I&apos;m Desiana Fitria
           </h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            I'm a passionate developer, mainly interested in Back-End and Cloud
-            Computing, also excited to learn new things to upgrade my skills.
+            I&apos;m a passionate developer, mainly interested in Back-End and
+            Cloud Computing, also excited to learn new things to upgrade my
+            skills.
           </p>
           <div className="flex justify-center space-x-4">
             <a
@@ -180,8 +234,8 @@ export default function Portfolio() {
           <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-gray-600 mb-6">
-                I'm a passionate web developer with experience in back-end and
-                cloud computing technologies. I love creating tools that can
+                I&apos;m a passionate web developer with experience in back-end
+                and cloud computing technologies. I love creating tools that can
                 accomodate my hobbies and solve real-world problems.
               </p>
               <p className="text-gray-600 mb-6">
@@ -498,6 +552,63 @@ export default function Portfolio() {
                   <div className="mt-4 md:mt-0 md:ml-6">
                     <span className="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">
                       2023
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Work Section */}
+      <section id="work" className="py-20 px-6 bg-white/50">
+        <div className="container mx-auto">
+          <h3 className="text-3xl font-bold text-center mb-12 text-gray-800">
+            Work Experience
+          </h3>
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-8">
+              <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-rose-400">
+                <div className="flex flex-col md:flex-row md:justify-between md:items-start">
+                  <div className="flex-1">
+                    <h4 className="text-xl font-semibold text-gray-800 mb-2">
+                      Cloud Computing Mentor
+                    </h4>
+                    <p className="text-rose-600 font-medium mb-2">
+                      Bangkit 2024 Batch 1
+                    </p>
+                    <ul className="list-disc text-gray-600 text-sm space-y-1 mb-3 ml-4">
+                      <li>
+                        Led a team of 25 participants in Bangkit 2024 Batch 1.
+                      </li>
+                      <li>
+                        Successfully supported participants in completing their
+                        final projects with a high satisfaction rate of 4.89 and
+                        a completion rate of 96%.
+                      </li>
+                      <li>
+                        Collaborated with the instructor to deliver engaging
+                        learning experiences to Bangkit 2024 Batch 1
+                        participants, resulting in a satisfaction rating of
+                        4.85.
+                      </li>
+                    </ul>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm">
+                        Mentoring
+                      </span>
+                      <span className="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm">
+                        Leadership
+                      </span>
+                      <span className="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm">
+                        Cloud Computing
+                      </span>
+                    </div>
+                  </div>
+                  <div className="mt-4 md:mt-0 md:ml-6">
+                    <span className="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">
+                      February - July 2024
                     </span>
                   </div>
                 </div>
@@ -827,7 +938,7 @@ export default function Portfolio() {
         <div className="container mx-auto">
           <div className="mb-12">
             <div className="flex justify-between items-center mb-8">
-              <h3 className="text-3xl font-bold text-gray-800">PROJECTS</h3>
+              <h3 className="text-3xl font-bold text-gray-800">Projects</h3>
               <div className="flex space-x-1 bg-white rounded-lg p-1 shadow-sm border">
                 <button
                   onClick={() => setActiveTab("project")}
@@ -837,7 +948,7 @@ export default function Portfolio() {
                       : "text-gray-600 hover:text-rose-400"
                   }`}
                 >
-                  project
+                  Projects
                 </button>
                 <button
                   onClick={() => setActiveTab("mini projects")}
@@ -847,7 +958,7 @@ export default function Portfolio() {
                       : "text-gray-600 hover:text-blue-400"
                   }`}
                 >
-                  mini projects
+                  Mini Projects
                 </button>
               </div>
             </div>
@@ -870,26 +981,54 @@ export default function Portfolio() {
                 </div>
 
                 {/* Screenshots Section */}
-                <Card className="overflow-hidden border-2 border-gray-800 flex-1 max-w-md">
+                <Card className="overflow-hidden border-2 border-white flex-1 max-w-md bg-white">
                   <CardContent className="p-0 h-80 flex items-center justify-center relative">
-                    <img
-                      src={
-                        currentProjects[currentIndex]?.image ||
-                        "/placeholder.svg"
-                      }
-                      alt={currentProjects[currentIndex]?.title}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                      <span className="text-white text-lg font-medium">
-                        screenshots of the project
-                      </span>
-                    </div>
+                    {hasMultipleImages && (
+                      <div className="absolute inset-0 flex justify-between items-center px-4 z-10">
+                        <button
+                          onClick={prevImage}
+                          className="bg-white/70 hover:bg-white/90 rounded-full p-1 transition-colors"
+                        >
+                          <ChevronLeft className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={nextImage}
+                          className="bg-white/70 hover:bg-white/90 rounded-full p-1 transition-colors"
+                        >
+                          <ChevronRight className="w-4 h-4" />
+                        </button>
+                      </div>
+                    )}
+                    {currentImages[currentImageIndex] && (
+                      <Image
+                        src={currentImages[currentImageIndex]}
+                        alt={`${currentProjects[currentIndex]?.title} - Image ${
+                          currentImageIndex + 1
+                        }`}
+                        width={600}
+                        height={400}
+                        className="w-full h-full object-contain"
+                      />
+                    )}
+                    {hasMultipleImages && (
+                      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
+                        {currentImages.map((_, index) => (
+                          <div
+                            key={index}
+                            className={`w-2 h-2 rounded-full ${
+                              index === currentImageIndex
+                                ? "bg-rose-400"
+                                : "bg-gray-300"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
 
                 {/* Description Section */}
-                <Card className="border-2 border-gray-800 flex-1 max-w-md">
+                <Card className="border-2 border-white flex-1 max-w-md">
                   <CardContent className="p-6 h-80 flex flex-col justify-between">
                     <div>
                       <h4 className="text-xl font-bold mb-3 text-gray-800">
@@ -916,42 +1055,44 @@ export default function Portfolio() {
                       </div>
                     </div>
                     <div className="flex space-x-3">
-                      <a
-                        href={currentProjects[currentIndex]?.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="border-gray-400 text-gray-600 hover:bg-gray-50 text-xs"
+                      {currentProjects[currentIndex]?.github && (
+                        <a
+                          href={currentProjects[currentIndex]?.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
-                          <Github className="w-3 h-3 mr-1" />
-                          Code
-                        </Button>
-                      </a>
-                      <a
-                        href={currentProjects[currentIndex]?.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Button
-                          size="sm"
-                          className={`text-xs ${
-                            activeTab === "project"
-                              ? "bg-rose-400 hover:bg-rose-500"
-                              : "bg-blue-400 hover:bg-blue-500"
-                          } text-white`}
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="border-gray-400 text-gray-600 hover:bg-gray-50 text-xs"
+                          >
+                            <Github className="w-3 h-3 mr-1" />
+                            Code
+                          </Button>
+                        </a>
+                      )}
+                      {currentProjects[currentIndex]?.live && (
+                        <a
+                          href={currentProjects[currentIndex]?.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
-                          <ExternalLink className="w-3 h-3 mr-1" />
-                          Live Demo
-                        </Button>
-                      </a>
+                          <Button
+                            size="sm"
+                            className={`text-xs ${
+                              activeTab === "project"
+                                ? "bg-rose-400 hover:bg-rose-500"
+                                : "bg-blue-400 hover:bg-blue-500"
+                            } text-white`}
+                          >
+                            <ExternalLink className="w-3 h-3 mr-1" />
+                            Live Demo
+                          </Button>
+                        </a>
+                      )}
                     </div>
                     <div className="text-center mt-2">
-                      <span className="text-gray-500 text-sm">
-                        project description
-                      </span>
+                      <span className="text-gray-500 text-sm"></span>
                     </div>
                   </CardContent>
                 </Card>
@@ -978,22 +1119,42 @@ export default function Portfolio() {
         <div className="container mx-auto text-center">
           <h3 className="text-3xl font-bold mb-8 text-white">Get In Touch</h3>
           <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
-            I'm always open to discussing new opportunities and interesting
+            I&apos;m always open to discussing new opportunities and interesting
             projects.
           </p>
-          <a href="mailto:your.email@example.com" className="inline-block">
-            <Button className="bg-gradient-to-r from-rose-400 to-blue-400 hover:from-rose-500 hover:to-blue-500 text-white">
-              <Mail className="w-4 h-4 mr-2" />
-              Contact Me
-            </Button>
-          </a>
+          <div className="flex justify-center space-x-2">
+            <a href="mailto:desianadf01@gmail.com" className="inline-block">
+              <Button className="bg-gradient-to-r from-rose-400 to-blue-400 hover:from-rose-500 hover:to-blue-500 text-white">
+                <Mail className="w-4 h-4 mr-2" />
+                Email
+              </Button>
+            </a>
+            <a
+              href="https://wa.me/6281395207762"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block"
+            >
+              <Button className="bg-green-500 hover:bg-green-600 text-white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-4 h-4 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M20.52 3.48A12.07 12.07 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.12.55 4.18 1.6 6.01L0 24l6.18-1.62A12.07 12.07 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.23-3.48-8.52zM12 22c-1.85 0-3.66-.5-5.23-1.44l-.37-.22-3.67.96.98-3.58-.24-.37A9.93 9.93 0 0 1 2 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.2-7.8c-.28-.14-1.65-.81-1.9-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.34.42-.51.14-.17.18-.29.28-.48.09-.19.05-.36-.02-.5-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.62-.47-.16-.01-.36-.01-.56-.01-.19 0-.5.07-.76.34-.26.27-1 1-.98 2.43.02 1.43 1.02 2.81 1.16 3 .14.19 2.01 3.07 4.88 4.19.68.29 1.21.46 1.62.59.68.22 1.3.19 1.79.12.55-.08 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33z" />
+                </svg>
+                Whatsapp
+              </Button>
+            </a>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-8 px-6">
         <div className="container mx-auto text-center">
-          <p>&copy; 2024 Your Name. All rights reserved.</p>
+          <p>&copy; 2025 Desiana Fitria. All rights reserved.</p>
         </div>
       </footer>
     </div>
